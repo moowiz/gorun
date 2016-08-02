@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -25,6 +26,10 @@ func main() {
 func main() {
 	flag.Parse()
 	flags := flag.Args()
+	if len(flags) == 0 {
+		fmt.Println("Nothing to do...")
+		return
+	}
 	command := flags[0]
 
 	tmpl, err := template.New("prog").Parse(prog)
